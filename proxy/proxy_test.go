@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"google.golang.org/grpc/credentials/insecure"
 	"net"
 	"testing"
 
@@ -11,8 +12,8 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/test/bufconn"
 
-	"github.com/mwitkow/grpc-proxy/proxy"
-	"github.com/mwitkow/grpc-proxy/testservice"
+	"github.com/pisken/grpc-proxy/proxy"
+	"github.com/pisken/grpc-proxy/testservice"
 )
 
 var testBackend = flag.String("test-backend", "", "Service providing TestServiceServer")
@@ -71,7 +72,7 @@ func TestLegacyBehaviour(t *testing.T) {
 	// users do not need to know they're talking to a proxy.
 	proxyCC, err := grpc.Dial(
 		"bufnet",
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 		grpc.WithContextDialer(func(ctx context.Context, s string) (net.Conn, error) {
 			return proxyBc.Dial()
@@ -130,7 +131,7 @@ func TestNewProxy(t *testing.T) {
 	t.Logf("dialing %s", proxyBc.Addr())
 	proxyCC, err := grpc.Dial(
 		proxyBc.Addr().String(),
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 		grpc.WithContextDialer(func(ctx context.Context, s string) (net.Conn, error) {
 			return proxyBc.Dial()
@@ -175,7 +176,7 @@ func backendDialer(t *testing.T, opts ...grpc.DialOption) (*grpc.ClientConn, err
 	})
 
 	opts = append(opts,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 		grpc.WithContextDialer(func(ctx context.Context, s string) (net.Conn, error) {
 			return backendBc.Dial()
@@ -194,7 +195,7 @@ func backendDialer(t *testing.T, opts ...grpc.DialOption) (*grpc.ClientConn, err
 
 func backendSvcDialer(t *testing.T, addr string, opts ...grpc.DialOption) (*grpc.ClientConn, error) {
 	opts = append(opts,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
 	)
 

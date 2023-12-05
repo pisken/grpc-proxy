@@ -1,13 +1,13 @@
 # gRPC Proxy
 
 [![Travis Build](https://travis-ci.org/mwitkow/grpc-proxy.svg?branch=master)](https://travis-ci.org/mwitkow/grpc-proxy)
-[![Go Report Card](https://goreportcard.com/badge/github.com/mwitkow/grpc-proxy)](https://goreportcard.com/report/github.com/mwitkow/grpc-proxy)
-[![Go Reference](https://pkg.go.dev/badge/github.com/mwitkow/grpc-proxy.svg)](https://pkg.go.dev/github.com/mwitkow/grpc-proxy)
+[![Go Report Card](https://goreportcard.com/badge/github.com/pisken/grpc-proxy)](https://goreportcard.com/report/github.com/pisken/grpc-proxy)
+[![Go Reference](https://pkg.go.dev/badge/github.com/pisken/grpc-proxy.svg)](https://pkg.go.dev/github.com/pisken/grpc-proxy)
 [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 [gRPC Go](https://github.com/grpc/grpc-go) Proxy server
 
-This is a fork of [mwitkow/grpc-proxy](https://github.com/mwitkow/grpc-proxy) package with upgrade version
+This is a fork of [mwitkow/grpc-proxy](https://github.com/pisken/grpc-proxy) package with upgrade version
 
 ## Project Goal
 
