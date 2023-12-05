@@ -7,6 +7,8 @@
 
 [gRPC Go](https://github.com/grpc/grpc-go) Proxy server
 
+This is a fork of [mwitkow/grpc-proxy](https://github.com/mwitkow/grpc-proxy) package with upgrade version
+
 ## Project Goal
 
 Build a transparent reverse proxy for gRPC targets that will make it easy to expose gRPC services
